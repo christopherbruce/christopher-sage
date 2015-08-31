@@ -11,33 +11,37 @@ namespace Roots\Sage;
  *
  * @return boolean
  */
-class ConditionalTagCheck {
-  private $conditionals;
+class ConditionalTagCheck
+{
 
-  public $result = true;
+    private $conditionals;
 
-  public function __construct($conditionals = []) {
-    $this->conditionals = $conditionals;
+    public $result = true;
 
-    $conditionals = array_map([$this, 'checkConditionalTag'], $this->conditionals);
+    public function __construct($conditionals = [])
+    {
+        $this->conditionals = $conditionals;
 
-    if (in_array(true, $conditionals)) {
-      $this->result = false;
-    }
-  }
+        $conditionals = array_map([$this, 'checkConditionalTag'], $this->conditionals);
 
-  private function checkConditionalTag($conditional) {
-    if (is_array($conditional)) {
-      list($tag, $args) = $conditional;
-    } else {
-      $tag = $conditional;
-      $args = false;
+        if (in_array(true, $conditionals)) {
+            $this->result = false;
+        }
     }
 
-    if (function_exists($tag)) {
-      return $args ? $tag($args) : $tag();
-    } else {
-      return false;
+    private function checkConditionalTag($conditional)
+    {
+        if (is_array($conditional)) {
+            list($tag, $args) = $conditional;
+        } else {
+            $tag = $conditional;
+            $args = false;
+        }
+
+        if (function_exists($tag)) {
+            return $args ? $tag($args) : $tag();
+        } else {
+            return false;
+        }
     }
-  }
 }
