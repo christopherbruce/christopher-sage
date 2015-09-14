@@ -3,6 +3,7 @@ var argv         = require('minimist')(process.argv.slice(2));
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync  = require('browser-sync').create();
 var changed      = require('gulp-changed');
+var coffee       = require('gulp-coffee');
 var concat       = require('gulp-concat');
 var flatten      = require('gulp-flatten');
 var gulp         = require('gulp');
@@ -204,6 +205,13 @@ var writeToManifest = function (directory) {
 
 // ## Gulp tasks
 // Run `gulp -T` for a task summary
+gulp.task('coffee', function() {
+  gulp.src('./assets/scripts/*.coffee')
+  .pipe(coffee({bare: true}).on('error', function(err) {
+    console.error(err.message);
+  }))
+  .pipe(gulp.dest('./assets/scripts/'));
+});
 
 // ### Styles
 // `gulp styles` - Compiles, combines, and optimizes Bower CSS and project CSS.
@@ -229,7 +237,7 @@ gulp.task('styles', ['wiredep'], function () {
 // ### Scripts
 // `gulp scripts` - Runs JSHint then compiles, combines, and optimizes Bower JS
 // and project JS.
-gulp.task('scripts', ['jshint'], function () {
+gulp.task('scripts', ['coffee', 'jshint'], function () {
     var merged = merge();
     manifest.forEachDependency('js', function (dep) {
         merged.add(
