@@ -1,9 +1,10 @@
 {
-  "name": "wordofmouthdentistry",
-  "homepage": "http://wordofmouthdentistry.ca",
+  "name": "wordofmouthdentistry",
+  "homepage": "http://wordofmouthdentistry.ca",
   "authors": [
     "Christopher Bruce Sabine <christopher@octopusink.ca>"
   ],
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "jquery": "*",
@@ -11,8 +12,5 @@
     "susy": "*",
     "sassline": "*",
     "compass-breakpoint": "breakpoint-sass#~2.6.1"
-  },
-  "overrides": {
-    
   }
 }

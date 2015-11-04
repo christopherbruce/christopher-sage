@@ -1,22 +1,16 @@
 {
-  "name": "sage",
-  "version": "8.3.0",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "https://roots.io/sage/",
+  "name": "wordofmouthdentistry",
+  "version": "1.0.0",
+  "author": "Christopher Bruce Sabine <christopher@octopusink.ca>",
+  "homepage": "http://wordofmouthdentistry.ca/",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/sage.git"
+    "url": "git://gitlab.thatpleases.me/octopusink/wordofmouthdentistry.git"
   },
   "bugs": {
-    "url": "https://github.com/roots/sage/issues"
+    "url": "http://gitlab.thatpleases.me/octopusink/wordofmouthdentistry/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
-    }
-  ],
   "scripts": {
     "build": "bower install && gulp",
     "jshint": "gulp jshint",
