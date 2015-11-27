@@ -19,6 +19,7 @@ var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
+var coffee       = require('gulp-coffee');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -165,6 +166,14 @@ var writeToManifest = function(directory) {
 
 // ## Gulp tasks
 // Run `gulp -T` for a task summary
+
+gulp.task('coffee', function() {
+  gulp.src('./assets/scripts/*.coffee')
+  .pipe(coffee({bare: true}).on('error', function(err) {
+    console.error(err.message);
+  }))
+  .pipe(gulp.dest('./dist/scripts/'));
+});
 
 // ### Styles
 // `gulp styles` - Compiles, combines, and optimizes Bower CSS and project CSS.
