@@ -1,15 +1,15 @@
 {
-  "name": "wordofmouthdentistry",
+  "name": "projectnmae",
   "version": "1.0.0",
   "author": "Christopher Bruce Sabine <christopher@octopusink.ca>",
-  "homepage": "http://wordofmouthdentistry.ca/",
+  "homepage": "http://projectname.com/",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://gitlab.thatpleases.me/octopusink/wordofmouthdentistry.git"
+    "url": "git://gitlab.thatpleases.me/example/example"
   },
   "bugs": {
-    "url": "http://gitlab.thatpleases.me/octopusink/wordofmouthdentistry/issues"
+    "url": "http://gitlab.thatpleases.me/example/example/issues"
   },
   "scripts": {
     "build": "bower install && gulp",

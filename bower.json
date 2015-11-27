@@ -1,6 +1,6 @@
 {
-  "name": "wordofmouthdentistry",
-  "homepage": "http://wordofmouthdentistry.ca",
+  "name": "projectname",
+  "homepage": "http://projectname.com",
   "authors": [
     "Christopher Bruce Sabine <christopher@octopusink.ca>"
   ],
@@ -9,10 +9,12 @@
     "jquery": "*",
     "normalize-scss": "*",
     "susy": "*",
-    "sassline": "*",
+    "modernizr": "2.8.2",
     "compass-breakpoint": "breakpoint-sass#~2.6.1"
   },
   "overrides": {
-    
+    "modernizr": {
+      "main": "./modernizr.js"
+    }
   }
 }
