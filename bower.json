@@ -1,6 +1,6 @@
 {
-  "name": "projectname",
-  "homepage": "http://projectname.com",
+  "name": "angular-test-theme",
+  "homepage": "http://angulartest.dev",
   "authors": [
     "Christopher Bruce Sabine <christopher@octopusink.ca>"
   ],
@@ -10,7 +10,10 @@
     "normalize-scss": "*",
     "susy": "*",
     "modernizr": "2.8.2",
-    "compass-breakpoint": "breakpoint-sass#~2.6.1"
+    "compass-breakpoint": "breakpoint-sass#~2.6.1",
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "angular-sanitize": "~1.4.8"
   },
   "overrides": {
     "modernizr": {

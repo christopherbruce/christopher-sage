@@ -1,8 +1,8 @@
 {
-  "name": "projectnmae",
+  "name": "angular-test-theme",
   "version": "1.0.0",
   "author": "Christopher Bruce Sabine <christopher@octopusink.ca>",
-  "homepage": "http://projectname.com/",
+  "homepage": "http://angulartest.dev/",
   "private": true,
   "repository": {
     "type": "git",

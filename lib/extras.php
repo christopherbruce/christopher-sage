@@ -4,6 +4,7 @@ namespace Roots\Sage\Extras;
 
 use Roots\Sage\Setup;
 
+add_filter('show_admin_bar', '__return_false');
 /**
  * Add <body> classes
  */

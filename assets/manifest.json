@@ -19,9 +19,12 @@
     },
     "jquery.js": {
       "bower": ["jquery"]
+    },
+    "angular.js": {
+      "bower": ["angular", "angular-route", "angular-sanitize"]
     }
   },
   "config": {
-    "devUrl": "http://local.wordofmouthdentistry.ca"
+    "devUrl": "http://angulartest.dev"
   }
 }

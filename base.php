@@ -6,7 +6,7 @@ use Roots\Sage\Wrapper;
 ?>
 
 <!doctype html>
-<html class="no-js" <?php language_attributes(); ?>>
+<html class="no-js" <?php language_attributes(); ?> ng-app="app">
   <?php get_template_part('templates/head'); ?>
   <body <?php body_class(); ?>>
     <!--[if lt IE 9]>
@@ -23,11 +23,6 @@ use Roots\Sage\Wrapper;
         <main class="main">
           <?php include Wrapper\template_path(); ?>
         </main><!-- /.main -->
-        <?php if (Setup\display_sidebar()) : ?>
-          <aside class="sidebar">
-            <?php include Wrapper\sidebar_path(); ?>
-          </aside><!-- /.sidebar -->
-        <?php endif; ?>
       </div><!-- /.content -->
     </div><!-- /.wrap -->
     <?php

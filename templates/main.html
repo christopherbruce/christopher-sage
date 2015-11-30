@@ -1,0 +1,21 @@
+<search-form></search-form>
+
+<h2 ng-if="categories">Categories:</h2>
+<ul ng-if="categories">
+	<li ng-repeat="category in categories">
+		<span ng-if="current_category_id && category.ID == current_category_id" ng-bind-html="category.name"></span>
+		<a href="category/{{category.slug}}" ng-bind-html="category.name" ng-if="!current_category_id || category.ID != current_category_id"></a>
+	</li>
+</ul>
+
+<h1 ng-bind-html="pageTitle"></h1>
+
+<ul>
+	<li ng-repeat="post in posts">
+		<h2><a href="{{post.slug}}" ng-bind-html="post.title"></a></h2>
+		<a href="{{post.slug}}" ng-if="post.featured_image.attachment_meta.sizes.thumbnail.url"><img ng-src="{{post.featured_image.attachment_meta.sizes.thumbnail.url}}" alt="{{post.featured_image.title}}" /></a>
+		<div ng-bind-html="post.excerpt"></div>
+	</li>
+</ul>
+
+<posts-nav-link prev-label="&laquo; Previous Page" next-label="Next Page &raquo;"></posts-nav-link>
