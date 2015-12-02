@@ -20,6 +20,7 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 var coffee       = require('gulp-coffee');
+var coffeelint   = require('gulp-coffeelint');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -169,6 +170,8 @@ var writeToManifest = function(directory) {
 
 gulp.task('coffee', function() {
   gulp.src('./assets/coffee/*.coffee')
+  .pipe(coffeelint())
+  .pipe(coffeelint.reporter())
   .pipe(coffee({bare: true}).on('error', function(err) {
     console.error(err.stack);
   }))
@@ -240,7 +243,6 @@ gulp.task('jshint', function() {
   return gulp.src([
     'bower.json', 'gulpfile.js'
   ].concat(project.js))
-    .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(gulpif(enabled.failJSHint, jshint.reporter('fail')));
 });
@@ -257,7 +259,7 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 // See: http://www.browsersync.io
 gulp.task('watch', function() {
   browserSync.init({
-    files: ['{lib,templates}/**/*.php', '*.php'],
+    files: ['{lib,templates}/**/*.php', '*.php','templates/**/*.html'],
     proxy: config.devUrl,
     snippetOptions: {
       whitelist: ['/wp-admin/admin-ajax.php'],
@@ -265,7 +267,7 @@ gulp.task('watch', function() {
     }
   });
   gulp.watch([path.source + 'styles/**/*'], ['styles']);
-  gulp.watch([path.source + 'scripts/**/*', path.source + 'coffee/**/*'], ['jshint', 'scripts']);
+  gulp.watch([path.source + 'coffee/**/*'], ['scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);
   gulp.watch(['bower.json', 'assets/manifest.json'], ['build']);

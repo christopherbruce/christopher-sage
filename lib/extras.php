@@ -4,7 +4,6 @@ namespace Roots\Sage\Extras;
 
 use Roots\Sage\Setup;
 
-add_filter('show_admin_bar', '__return_false');
 /**
  * Add <body> classes
  */
@@ -32,3 +31,12 @@ function excerpt_more() {
   return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
+
+// ********
+// intercept image file url by adding target attr to element. No route for that
+// ********
+function my_add_link_target( $html ) {
+	$html = preg_replace( '/(<a.*")>/', '$1 target="_self">', $html );
+	return $html;
+}
+add_filter( 'image_send_to_editor', __NAMESPACE__ . '\\my_add_link_target', 10 );

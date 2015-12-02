@@ -1,2 +1,9 @@
-<h1>{{post.title}}</h1>
-<div ng-bind-html="post.content"></div>
+<div ng-if="!is404">
+  <h1 ng-bind-html="post.title"></h1>
+  <div ng-bind-html="post.content"></div>
+</div>
+
+<div ng-if="is404">
+	<h1>Page Not Found</h1>
+	<p>{{errorMessage}}</p>
+</div>

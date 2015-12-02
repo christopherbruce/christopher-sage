@@ -6,7 +6,7 @@ use Roots\Sage\Wrapper;
 ?>
 
 <!doctype html>
-<html class="no-js" <?php language_attributes(); ?> ng-app="app">
+<html class="no-js" <?php language_attributes(); ?>>
   <?php get_template_part('templates/head'); ?>
   <body <?php body_class(); ?>>
     <!--[if lt IE 9]>
@@ -16,18 +16,24 @@ use Roots\Sage\Wrapper;
     <![endif]-->
     <?php
       do_action('get_header');
-      get_template_part('templates/header');
     ?>
-    <div class="wrap container" role="document">
-      <div class="content row">
-        <main class="main">
-          <?php include Wrapper\template_path(); ?>
-        </main><!-- /.main -->
-      </div><!-- /.content -->
-    </div><!-- /.wrap -->
+    <div class="app-container" ng-app="app">
+      <?php
+        get_template_part('templates/header');
+      ?>
+      <div class="wrap container" role="document">
+        <div class="content row">
+          <main class="main">
+            <?php include Wrapper\template_path(); ?>
+          </main><!-- /.main -->
+        </div><!-- /.content -->
+      </div><!-- /.wrap -->
     <?php
       do_action('get_footer');
       get_template_part('templates/footer');
+    ?>
+    </div>
+    <?php
       wp_footer();
     ?>
   </body>
