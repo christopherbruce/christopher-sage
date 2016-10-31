@@ -6,11 +6,11 @@
   ],
   "private": true,
   "dependencies": {
+    "compass-breakpoint": "breakpoint-sass#~2.6.1",
     "jquery": "*",
-    "normalize-scss": "*",
-    "susy": "*",
     "modernizr": "2.8.2",
-    "compass-breakpoint": "breakpoint-sass#~2.6.1"
+    "normalize-scss": "*",
+    "susy": "*"
   },
   "overrides": {
     "modernizr": {

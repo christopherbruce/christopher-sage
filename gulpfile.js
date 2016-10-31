@@ -20,6 +20,7 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 var coffee       = require('gulp-coffee');
+var coffeelint   = require('gulp-coffeelint');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -168,11 +169,13 @@ var writeToManifest = function(directory) {
 // Run `gulp -T` for a task summary
 
 gulp.task('coffee', function() {
-  gulp.src('./assets/scripts/*.coffee')
+  gulp.src('./assets/coffee/*.coffee')
+  .pipe(coffeelint())
+  .pipe(coffeelint.reporter())
   .pipe(coffee({bare: true}).on('error', function(err) {
-    console.error(err.message);
+    console.error(err.stack);
   }))
-  .pipe(gulp.dest('./dist/scripts/'));
+  .pipe(gulp.dest('./assets/scripts/'));
 });
 
 // ### Styles
@@ -199,7 +202,7 @@ gulp.task('styles', ['wiredep'], function() {
 // ### Scripts
 // `gulp scripts` - Runs JSHint then compiles, combines, and optimizes Bower JS
 // and project JS.
-gulp.task('scripts', ['jshint'], function() {
+gulp.task('scripts', ['coffee', 'jshint'], function() {
   var merged = merge();
   manifest.forEachDependency('js', function(dep) {
     merged.add(
@@ -265,7 +268,7 @@ gulp.task('watch', function() {
     }
   });
   gulp.watch([path.source + 'styles/**/*'], ['styles']);
-  gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
+  gulp.watch([path.source + 'coffee/**/*'], ['scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);
   gulp.watch(['bower.json', 'assets/manifest.json'], ['build']);

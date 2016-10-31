@@ -22,6 +22,6 @@
     }
   },
   "config": {
-    "devUrl": "http://local.wordofmouthdentistry.ca"
+    "devUrl": "http://projectname.dev"
   }
 }
